@@ -331,15 +331,19 @@
             font-size: 0.95rem;
         }
 
-        /* Experience Timeline */
+        /* Experience Timeline — slightly wider than default page gutter */
         .experience {
             padding: 5rem 2rem;
             background: var(--primary);
         }
 
+        .experience .container {
+            max-width: 1320px;
+        }
+
         .timeline {
             position: relative;
-            max-width: 900px;
+            max-width: 100%;
             margin: 0 auto;
         }
 
@@ -355,7 +359,7 @@
         }
 
         .timeline-item {
-            padding: 10px 40px;
+            padding: 10px 32px;
             position: relative;
             width: 50%;
             opacity: 0;
@@ -364,13 +368,13 @@
 
         .timeline-item:nth-child(odd) {
             left: 0;
-            text-align: right;
-            padding-right: 60px;
+            text-align: left;
+            padding-right: 56px;
         }
 
         .timeline-item:nth-child(even) {
             left: 50%;
-            padding-left: 60px;
+            padding-left: 56px;
         }
 
         .timeline-item::after {
@@ -393,10 +397,43 @@
 
         .timeline-content {
             background: transparent;
-            padding: 2rem;
+            padding: 1.5rem 2rem;
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 0;
             transition: all 0.4s ease;
+            max-width: 100%;
+        }
+
+        /* Single-column timeline (consistent left-to-right reading) */
+        .timeline::after {
+            left: 31px;
+        }
+
+        .timeline-item {
+            width: 100%;
+            left: 0;
+            padding-left: 70px;
+            padding-right: 25px;
+            text-align: left;
+        }
+
+        .timeline-item::after {
+            left: 21px;
+            right: auto;
+        }
+
+        .timeline-item:nth-child(odd)::after,
+        .timeline-item:nth-child(even)::after {
+            left: 21px;
+            right: auto;
+        }
+
+        .timeline-item:nth-child(odd),
+        .timeline-item:nth-child(even) {
+            left: 0;
+            padding-right: 25px;
+            padding-left: 70px;
+            text-align: left;
         }
 
         .timeline-content:hover {
@@ -425,13 +462,48 @@
 
         .timeline-description {
             color: var(--text-secondary);
-            line-height: 1.6;
+            line-height: 1.55;
+            font-size: 0.93rem;
+        }
+
+        .timeline-description ul {
+            margin-top: 0.65rem;
+            padding-left: 1.1rem;
+        }
+
+        .timeline-description li {
+            margin: 0.35rem 0;
         }
 
         /* Skills */
         .skills {
             padding: 5rem 2rem;
             background: var(--secondary);
+        }
+
+        /* Projects */
+        .projects {
+            padding: 5rem 2rem;
+            background: var(--secondary);
+        }
+
+        .project-meta {
+            margin-top: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .project-pill {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.35rem 0.8rem;
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            color: rgba(212, 175, 55, 0.95);
+            background: rgba(212, 175, 55, 0.05);
+            font-size: 0.85rem;
+            font-weight: 300;
+            letter-spacing: 0.5px;
         }
 
         .skills-grid {
@@ -582,6 +654,7 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="#achievements">Achievements</a></li>
                 <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">AI Projects</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -593,21 +666,21 @@
         <div class="hero-content">
             <div class="hero-text">
                 <h1>Rishabh Patil</h1>
-                <h2>Full Stack Software Engineer</h2>
-                <p>Building exceptional products from concept to scale · Currently engineering the future at Frontiers Market</p>
+                <h2>Software/AI Engineer</h2>
+                <p>Shipping products 0→1 — full-stack, AI, and cloud infra</p>
                 
                 <div class="hero-stats">
                     <div class="stat">
-                        <div class="stat-number">60%</div>
-                        <div class="stat-label">Faster Data Retrieval</div>
+                        <div class="stat-number">40%</div>
+                        <div class="stat-label">Lower API Latency</div>
                     </div>
                     <div class="stat">
-                        <div class="stat-number">95%</div>
-                        <div class="stat-label">Model Accuracy</div>
+                        <div class="stat-number">500GB/day</div>
+                        <div class="stat-label">Realtime Data Ingested</div>
                     </div>
                     <div class="stat">
-                        <div class="stat-number">500+</div>
-                        <div class="stat-label">Daily Active Users</div>
+                        <div class="stat-number">App Store</div>
+                        <div class="stat-label">iOS App Shipped</div>
                     </div>
                 </div>
 
@@ -622,27 +695,27 @@
     <!-- Key Achievements -->
     <section class="achievements" id="achievements">
         <div class="container">
-            <h2 class="section-title">Core Strengths</h2>
+            <h2 class="section-title">Key Achievements</h2>
             <div class="achievement-grid">
                 <div class="achievement-card">
                     <div class="achievement-icon">01</div>
-                    <h3 class="achievement-title">Product Vision</h3>
-                    <p class="achievement-description">0→1 product development. iOS app from scratch. 95% accuracy on integrated vision models.</p>
+                    <h3 class="achievement-title">0→1 Product Shipping</h3>
+                    <p class="achievement-description">Shipped products from concept to production—owning engineering execution end-to-end across full-stack, AI, and mobile.</p>
                 </div>
                 <div class="achievement-card">
                     <div class="achievement-icon">02</div>
-                    <h3 class="achievement-title">Technical Agility</h3>
-                    <p class="achievement-description">Full-stack fluency. Infrastructure migrations. 40% performance gains with secure and scalable ML pipelines.</p>
+                    <h3 class="achievement-title">Gemini Agentic Workflows</h3>
+                    <p class="achievement-description">Ingested 500GB/day of real-time data streams into Gemini-powered agentic workflows for fast, actionable intelligence.</p>
                 </div>
                 <div class="achievement-card">
                     <div class="achievement-icon">03</div>
-                    <h3 class="achievement-title">User Impact</h3>
-                    <p class="achievement-description">500+ daily active users on natural language chatbot for iOS app. 30% traction increase. </p>
+                    <h3 class="achievement-title">iOS + Vision Models</h3>
+                    <p class="achievement-description">Built and shipped an iOS app from scratch with embedded vision models—launched to the App Store.</p>
                 </div>
                 <div class="achievement-card">
                     <div class="achievement-icon">04</div>
-                    <h3 class="achievement-title">AI Integration</h3>
-                    <p class="achievement-description">Claude LLM integration with MCP servers. Natural language queries. 60% faster data retrieval.</p>
+                    <h3 class="achievement-title">Performance Impact</h3>
+                    <p class="achievement-description">Reduced backend/API latency by 40% through database indexing, query optimization, and profiling in production systems.</p>
                 </div>
             </div>
         </div>
@@ -656,17 +729,30 @@
                 <div class="timeline-item">
                     <div class="timeline-content">
                         <div class="timeline-date">May 2024 - Present</div>
-                        <h3 class="timeline-title">Fullstack Software Engineer</h3>
+                        <h3 class="timeline-title">Software Engineer</h3>
                         <p class="timeline-company">Frontiers Market, Austin, TX</p>
-                        <p class="timeline-description">Leading AI integration and mobile development initiatives. Built robust chat interface with Claude LLM, delivered iOS app from scratch with CoreML, and architected infrastructure migration improving system scalability.</p>
+                        <div class="timeline-description">
+                            <ul>
+                                <li>−40% API latency — Postgres indexing + NestJS query tuning.</li>
+                                <li>OpenTelemetry tracing + Sentry logging for faster incident triage.</li>
+                                <li>Terraform-managed Cloud Run for repeatable infra.</li>
+                                <li>Agentic LLM: MCP server (Claude × internal APIs) + Gemini workflows.</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-content">
                         <div class="timeline-date">Nov 2023 - Feb 2024</div>
-                        <h3 class="timeline-title">Software Engineer</h3>
+                        <h3 class="timeline-title">Software Engineer (Part-time)</h3>
                         <p class="timeline-company">JETSWEAT, New York (Remote)</p>
-                        <p class="timeline-description">Engineered on-demand fitness platform serving 1000+ users. Implemented payment systems and delivered bulk booking functionality resulting in 15% surge in user retention.</p>
+                        <div class="timeline-description">
+                            <ul>
+                                <li>Full-stack AWS (Node, React, MySQL) · high-availability ops.</li>
+                                <li>Stripe integration · $50K+/mo payment volume.</li>
+                                <li>Datadog + Jenkins CI/CD + containers for safer releases.</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 <div class="timeline-item">
@@ -674,7 +760,53 @@
                         <div class="timeline-date">May 2023 - Aug 2023</div>
                         <h3 class="timeline-title">Software Engineering Intern</h3>
                         <p class="timeline-company">LivestockCity, Los Angeles (Remote)</p>
-                        <p class="timeline-description">Built e-commerce portal and integrated live auction features. Optimized data retrieval with Redis cache, achieving fourfold increase in user traction.</p>
+                        <div class="timeline-description">
+                            <ul>
+                                <li>Real-time auctions — React · Django · Redis.</li>
+                                <li>Redis caching for throughput → 4× user growth.</li>
+                                <li>−40% backend latency · API + query profiling.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Projects -->
+    <section class="projects" id="projects">
+        <div class="container">
+            <h2 class="section-title">AI Projects</h2>
+            <div class="achievement-grid">
+                <div class="achievement-card">
+                    <div class="achievement-icon">01</div>
+                    <h3 class="achievement-title">Agentic Swarm Orchestrator</h3>
+                    <p class="achievement-description">
+                        Built a multi-agent (queen–worker) system to automate backend, frontend, and QA work across projects.
+                        Shipped a CLI that coordinates cross-repo changes with Git + GCP integrations, and added role-specific guardrails
+                        to enforce architecture, testing, and code quality.
+                    </p>
+                    <div class="project-meta">
+                        <span class="project-pill">Multi-agent systems</span>
+                        <span class="project-pill">CLI tooling</span>
+                        <span class="project-pill">Git + GCP</span>
+                        <span class="project-pill">Linear integration</span>
+                        <span class="project-pill">Guardrails</span>
+                    </div>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">02</div>
+                    <h3 class="achievement-title">Real-time Market Analysis</h3>
+                    <p class="achievement-description">
+                        Developed a Python streaming pipeline for real-time stock market analysis using Apache Kafka.
+                        Implemented data cleaning and aggregation with Pandas/NumPy and configured producers/consumers for reliable,
+                        scalable event-driven processing.
+                    </p>
+                    <div class="project-meta">
+                        <span class="project-pill">Python</span>
+                        <span class="project-pill">Apache Kafka</span>
+                        <span class="project-pill">Pandas/NumPy</span>
+                        <span class="project-pill">Streaming</span>
                     </div>
                 </div>
             </div>
@@ -705,6 +837,7 @@
                         <span class="skill-tag">React Native</span>
                         <span class="skill-tag">Next.js</span>
                         <span class="skill-tag">HTML/CSS</span>
+                        <span class="skill-tag">SwiftUI</span>
                         <span class="skill-tag">CoreML</span>
                     </div>
                 </div>
@@ -713,7 +846,6 @@
                     <div class="skill-tags">
                         <span class="skill-tag">Node.js</span>
                         <span class="skill-tag">Django</span>
-                        <span class="skill-tag">SpringBoot</span>
                         <span class="skill-tag">NestJS</span>
                         <span class="skill-tag">RESTful APIs</span>
                     </div>
@@ -735,14 +867,12 @@
                         <span class="skill-tag">MongoDB</span>
                         <span class="skill-tag">Redis</span>
                         <span class="skill-tag">MySQL</span>
-                        <span class="skill-tag">DynamoDB</span>
                     </div>
                 </div>
                 <div class="skill-category">
                     <h3>AI & Tools</h3>
                     <div class="skill-tags">
                         <span class="skill-tag">Claude</span>
-                        <span class="skill-tag">Llama</span>
                         <span class="skill-tag">MCP Servers</span>
                         <span class="skill-tag">Git</span>
                         <span class="skill-tag">Kafka</span>
